@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
-public class JdbcUserService {
+public class UserService {
     // jdbc实现
-    @Resource(name = "JdbcUserDao")
+//    @Resource(name = "JdbcUserDao")
+    // MyBatis实现
+    @Resource(name = "MyBatisUserDao")
     private UserDao userDao;
 
     public void reset() {
@@ -27,10 +29,6 @@ public class JdbcUserService {
         userDao.updateData(tgtUserId, count);
     }
 
-    public List<User> getUserList() {
-        return userDao.getUserList();
-    }
-
     public void printUserList() {
         List<User> userList = userDao.getUserList();
         for (User user: userList) {
@@ -38,7 +36,7 @@ public class JdbcUserService {
         }
     }
 
-    public void throwException() {
+    private void throwException() {
         throw new RuntimeException("ERROR");
     }
 }

@@ -1,15 +1,15 @@
 package com.hufangquan.learnSpring.DataBase.applications;
 
-import com.hufangquan.learnSpring.DataBase.service.JdbcUserService;
+import com.hufangquan.learnSpring.DataBase.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class JdbcApplication {
+public class Application {
     public static void main(String[] args) throws Exception {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 
-        JdbcUserService service = context.getBean(JdbcUserService.class);
+        UserService service = context.getBean(UserService.class);
         service.reset();
         service.printUserList();
         System.out.println("----------after-----------");
